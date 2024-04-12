@@ -38,6 +38,7 @@ Findify App is a web application designed to help users find their lost items or
 - **Get /signup**:Render Register Page.
 - **GET /admin**: Get unauthenticated users (for admin only).
 <hr/>
+
 - **POST /signup**: Register a new user.
 - **POST /login**: Login existing users.
 - **POST /logout**: User logout and Remove Token.
