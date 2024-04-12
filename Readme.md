@@ -37,15 +37,15 @@ Findify App is a web application designed to help users find their lost items or
 - **Get /login**: Render Login Page.
 - **Get /signup**:Render Register Page.
 - **GET /admin**: Get unauthenticated users (for admin only).
-
+<hr/>
 - **POST /signup**: Register a new user.
 - **POST /login**: Login existing users.
 - **POST /logout**: User logout and Remove Token.
 - **POST /items**: Create a new post about a found item.
-
+<hr/>
 - **Put /users/:id**: Report an unauthenticated finder.
 - **Put /items/:itemId**: Mark this item as delivered to his owner.
-
+<hr/>
 - **DELETE /admin/:userId**: Remove a user and their posts from the system (for admin only).
 
 ## APIs For just test
@@ -94,4 +94,4 @@ Feel free to contribute to this project by submitting pull requests.
 
 ## License
 
-This project is licensed under the ISC License.
+© [Asmaa-Elfatayry] - [2024]
