@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="../images/assets/research.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/styles/item.css" />
+    <title>Lost Items</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">
+          <img src="../images/assets/logo.svg" class="logo" alt="logo" />
+        </span>
+        <div id="navbarButtons"></div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div class="info d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <button
+            class="btn-custom me-2 addPost"
+            data-bs-toggle="modal"
+            data-bs-target="#addItemModal"
+          >
+            New Post +
+          </button>
+        </div>
+        <!-- Bootstrap search bar -->
+        <div class="input-group search">
+          <input
+            type="text"
+            class="form-control w-50"
+            placeholder="Search for item..."
+            aria-label="Search"
+            id="searchInput"
+            aria-describedby="searchButton"
+          />
+          <button
+            class="btn btn-outline-secondary w-25"
+            type="button"
+            id="searchButton"
+          >
+            <img width="20" alt="icon" src="../images/assets/research.png" />
+          </button>
+        </div>
+      </div>
+
+      <div id="itemsContainer">
+        <% items.forEach(item => { %> <% if (item.state === false) { %>
+        <div class="card-container" data-user-id="<%= item.createdBy._id %>">
+          <div class="card">
+            <img
+              src="../images/<%= item.imageUrl %>"
+              class="card-img-top"
+              alt="Image"
+            />
+            <div class="card-body" data-item-id="<%= item._id %>">
+              <p class="card-title">Name: <b><%= item.name %></b></p>
+              <p class="card-text">Description: <%= item.description %></p>
+              <% if (item.category !== 'general' && item.category !== "") { %>
+              <p class="card-text">Category: <%= item.category %></p>
+              <% } %>
+              <p class="card-text loc">
+                Found at location: <%= item.location %>
+              </p>
+              <p class="card-text">
+                Date: <%= new Date(item.createdAt).toLocaleString('en-US') %>
+              </p>
+              <div class="card-btns">
+                <% if (item.createdBy) { %>
+                <p class="card-text">
+                  <a class="mail btn" href="mailto:<%= item.createdBy.email %>"
+                    >Contact The Finder</a
+                  >
+                </p>
+                <% } else { %>
+                <p class="card-text">User not available</p>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %> <% }); %>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="addItemModal"
+      tabindex="-1"
+      aria-labelledby="addItemModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addItemModalLabel">
+              Found Item Details
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form
+              id="addItemForm"
+              method="post"
+              action="/items"
+              enctype="multipart/form-data"
+            >
+              <div class="mb-3">
+                <label for="name" class="form-label">Item Name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea
+                  class="form-control"
+                  id="description"
+                  name="description"
+                  required
+                ></textarea>
+              </div>
+              <!-- <div class="mb-3">
+              <label for="category" class="form-label">Category:</label>
+              <input class="form-control" type="text" id="category" name="category" />
+            </div> -->
+              <div class="mb-3">
+                <label for="location" class="form-label"
+                  >Found at location:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="location"
+                  name="location"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="pic" class="form-label">Item Pic:</label>
+                <input type="file" class="form-control" id="pic" name="image" />
+              </div>
+              <input class="btn-custom" type="submit" value="Post" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/item.js"></script>
+  </body>
+</html>

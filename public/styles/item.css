@@ -1,0 +1,125 @@
+:root{
+    --main-color:#c777f1;
+  }
+*{
+    padding: 0px ;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.navbar{
+    background-color: var(--main-color);
+    padding: 7px 50px;
+}
+
+.container .search{
+    width: 300px;
+}
+.container .search input:focus{
+    box-shadow:none;
+}
+#itemsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin:10px auto 100px ;
+}
+.card-container .card{
+    flex-direction: row;
+    padding-top: 20px;
+    gap: 40px;
+    position: relative;
+}
+.card-container .card img{
+    width: 230px;
+    padding: 40px;
+}
+.card-title {
+    border-bottom: 1px solid #a6a0a7;
+    width: fit-content;
+    padding-bottom: 9px;
+    font-size: 22px;
+}
+img.logo{
+    width: 140px;
+}
+.report-user{
+    position: absolute;
+    top: 5px;
+    color: rgb(224, 52, 52);
+    right: 10px;
+    border: none;
+}
+
+.btn-custom{
+    background-color: white;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    padding: 5px 15px;
+    outline: none;
+    color: var(--main-color);
+    font-weight: bold;
+    transition: 1s;
+    width: 100%;
+    margin:15px auto;
+}
+.btn-custom:hover{
+    background-color: var(--main-color);
+    color: white;
+}
+
+a.mail{
+    color: #fdf8ff;
+    background-color: #1a1a67;
+
+}
+a.mail:hover{
+    border:  1px solid #1a1a67;
+}
+
+#navbarButtons a{
+    text-decoration: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.474);
+    padding-bottom: 4px;
+}
+
+.card-btns{
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+
+}
+.deliver-btn{
+    background-color: var(--main-color);
+    color: #fff;
+    transition: .5s;
+}
+.deliver-btn:hover{
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+}
+.card.admin{
+    --bs-card-border-color: none;
+    margin-top: 15px;
+    border-top: 1px solid rgb(191, 191, 197);
+}
+.card-body.admin{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.admin-h1{
+    
+        color: darkblue;
+       
+        font-size: 32px;
+}
+@media (max-width:767px){
+    .card-container .card{
+        flex-direction: column;
+        align-items: center;
+    justify-content: center;
+        padding-top: 20px;
+        gap: 40px;
+        position: relative;
+    }
+}
